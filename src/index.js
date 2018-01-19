@@ -3,6 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 class Square extends Component {
+
+    /*
+  Optimizing Performance
+  Everytime the state change, it rerender components childs
+  But if the state of a child didnt change, why rerender it ?
+  */
+  shouldComponentUpdate(nextProps) {
+    return this.props.value !== nextProps.value;
+  }
+
   render() {
     return (
       <button className="square" onClick={() => { this.props.myClickMethod() }}>
@@ -11,6 +21,20 @@ class Square extends Component {
     );
   }
 }
+
+/*
+React supports a simpler syntax called functional components for component types
+like Square that only consist of a render method.
+ */
+/*
+function Square(props) {
+  return (
+    <button className="square" onClick={props.myClickMethod }>
+      {props.value}
+    </button>
+  );
+}
+*/
 
 class Board extends Component {
   constructor(props) {
