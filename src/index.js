@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
@@ -15,7 +15,7 @@ class Square extends Component {
 
   render() {
     return (
-      <button className="square" onClick={() => { this.props.myClickMethod() }}>
+      <button className="square" onClick={ this.props.myClickMethod }>
         {this.props.value}
       </button>
     );
@@ -36,11 +36,11 @@ function Square(props) {
 }
 */
 
-class Board extends Component {
+class Board extends PureComponent {
   renderSquare(i) {
     return (
       <Square
-        myClickMethod={() => {this.props.boardClick(i)}}
+        myClickMethod={(e) => {this.props.boardClick(i)}}
         value={this.props.squares[i]}
       />
     );
