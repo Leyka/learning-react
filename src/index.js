@@ -40,7 +40,8 @@ class Board extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      squares: Array(9).fill(null)
+      squares: Array(9).fill(null),
+      xIsNext: true
     }
   }
 
@@ -61,8 +62,11 @@ class Board extends Component {
   */
   handleClick(i) {
     const squaresCopy = this.state.squares.slice(); // Immutability
-    squaresCopy[i] = 'x';
-    this.setState({squares: squaresCopy});
+    squaresCopy[i] = this.state.xIsNext ? 'x' : 'o';
+    this.setState({
+      squares: squaresCopy,
+      xIsNext: !this.state.xIsNext
+    });
   }
 
   render() {
