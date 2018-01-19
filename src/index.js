@@ -36,7 +36,7 @@ class Board extends Component {
   That's why we have a custom handleClick function to update the STATE
   */
   handleClick(i) {
-    const squaresCopy = this.state.squares.slice();
+    const squaresCopy = this.state.squares.slice(); // Immutability
     squaresCopy[i] = 'x';
     this.setState({squares: squaresCopy});
   }
