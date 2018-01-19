@@ -3,28 +3,42 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 class Square extends Component {
-  // Initialize the state in the constructor
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: null
-    }
-    console.log('Square state:', this.state)
-  }
-
   render() {
     return (
-      /* 'value' is set in renderSquare() in Board class */
-      <button className="square" onClick={() => { this.setState({value: 'x'}) }}>
-        {this.state.value}
+      <button className="square" onClick={() => { this.props.myClickMethod() }}>
+        {this.props.value}
       </button>
     );
   }
 }
 
 class Board extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      squares: Array(9).fill(null)
+    }
+  }
+
   renderSquare(i) {
-    return <Square value={i}/>;
+    return (
+      <Square
+        myClickMethod={() => { this.handleClick(i) }}
+        value={this.state.squares[i]}
+      />
+    );
+  }
+
+  /*
+  Since component STATE is considered private, we can’t update Board’s state directly from Square.
+  The usual pattern here is pass down a function from Board to Square that gets called when the square is clicked.
+
+  That's why we have a custom handleClick function to update the STATE
+  */
+  handleClick(i) {
+    const squaresCopy = this.state.squares.slice();
+    squaresCopy[i] = 'x';
+    this.setState({squares: squaresCopy});
   }
 
   render() {
