@@ -3,10 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 class Square extends Component {
+  // Initialize the state in the constructor
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: null
+    }
+    console.log('Square state:', this.state)
+  }
+
   render() {
     return (
-      <button className="square">
-        {/* TODO */}
+      /* 'value' is set in renderSquare() in Board class */
+      <button className="square" onClick={() => { this.setState({value: 'x'}) }}>
+        {this.state.value}
       </button>
     );
   }
@@ -14,7 +24,7 @@ class Square extends Component {
 
 class Board extends Component {
   renderSquare(i) {
-    return <Square />;
+    return <Square value={i}/>;
   }
 
   render() {
