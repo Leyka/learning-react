@@ -37,56 +37,18 @@ function Square(props) {
 */
 
 class Board extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      squares: Array(9).fill(null),
-      xIsNext: true
-    }
-  }
-
   renderSquare(i) {
     return (
       <Square
-        myClickMethod={() => { this.handleClick(i) }}
-        value={this.state.squares[i]}
+        myClickMethod={() => {this.props.boardClick(i)}}
+        value={this.props.squares[i]}
       />
     );
   }
 
-  /*
-  Since component STATE is considered private, we can’t update Board’s state directly from Square.
-  The usual pattern here is pass down a function from Board to Square that gets called when the square is clicked.
-
-  That's why we have a custom handleClick function to update the STATE
-  */
-  handleClick(i) {
-    const squaresCopy = this.state.squares.slice(); // Immutability
-
-    if (calculateWinner(squaresCopy) || squaresCopy[i]) {
-      return;
-    }
-
-    squaresCopy[i] = this.state.xIsNext ? 'x' : 'o';
-    this.setState({
-      squares: squaresCopy,
-      xIsNext: !this.state.xIsNext
-    });
-  }
-
   render() {
-    const winner = calculateWinner(this.state.squares);
-    let status;
-    if (winner) {
-      status = 'Winner: ' + winner;
-    } else {
-      status = 'Next player: ' + (this.state.xIsNext ? 'x' : 'o');
-    }
-
-
     return (
       <div>
-        <div className="status">{status}</div>
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
@@ -108,15 +70,80 @@ class Board extends Component {
 }
 
 class Game extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      history: [
+        {squares: Array(9).fill(null)}
+      ],
+      xIsNext: true,
+      stepNumber: 0,
+    }
+  }
+
+  jumpTo(step) {
+    this.setState({
+      stepNumber: step,
+      xIsNext: step % 2 === 0,
+    });
+  }
+   /*
+  Since component STATE is considered private, we can’t update Board’s state directly from Square.
+  The usual pattern here is pass down a function from Board to Square that gets called when the square is clicked.
+
+  That's why we have a custom handleClick function to update the STATE
+  */
+  handleClick(i) {
+    const history = this.state.history.slice(0, this.state.stepNumber + 1); // slice [begin, end excluded]
+    const current = history[history.length - 1];
+    const squaresCopy = current.squares.slice(); // Immutability
+
+    if (calculateWinner(squaresCopy) || squaresCopy[i]) {
+      return;
+    }
+
+    squaresCopy[i] = this.state.xIsNext ? 'x' : 'o';
+    this.setState({
+      history: [...history, {squares: squaresCopy}],
+      xIsNext: !this.state.xIsNext,
+      stepNumber: history.length,
+    });
+  }
+
   render() {
+    const history = this.state.history;
+    const current = history[this.state.stepNumber];
+    const winner = calculateWinner(current.squares);
+    // Show the moves
+    const moves = history.map((_, idxMove) => {
+      const message = idxMove ? 'Go to move #' + idxMove : 'Go to start';
+      return (
+        <li key={idxMove}>
+          <button onClick={() => {this.jumpTo(idxMove)}}>{message}</button>
+        </li>
+      );
+    });
+
+    // Show next turn
+    let status;
+    if (winner) {
+      status = 'Winner: ' + winner;
+    } else {
+      status = 'Next player: ' + (this.state.xIsNext ? 'x' : 'o');
+    }
+
     return (
       <div className="game">
         <div className="game-board">
-          <Board />
+          <Board
+            squares={current.squares}
+            boardClick={(i) => {this.handleClick(i)}}
+          />
         </div>
         <div className="game-info">
-          <div>{/* status */}</div>
-          <ol>{/* TODO */}</ol>
+          <div>{status}</div>
+          <ol>{moves}</ol>
         </div>
       </div>
     );
@@ -151,6 +178,3 @@ ReactDOM.render(
   <Game />,
   document.getElementById('root')
 );
-
-
-
