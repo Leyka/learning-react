@@ -9,7 +9,7 @@ class Counter extends Component {
     return (
       <div>
         <small>-- Counter Container --</small>
-        <CounterDisplay counter={5}/>
+        <CounterDisplay counter={this.props.counterValue}/>
         <CounterInput />
         <CounterButton text={'Add'} />
         <CounterButton text={'Remove'} />
@@ -18,4 +18,15 @@ class Counter extends Component {
   }
 }
 
-export default Counter;
+// Map the global store to propTypes of 'Counter' container
+const mapStateToProps = state => ({
+  counterValue: state.counter
+});
+
+// Also map all the dispatches, again to propTypes of 'Counter'
+const mapDispatchToProps = dispatch => ({
+
+});
+
+// The 'connect' take a Container and returns a high order component 
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);
