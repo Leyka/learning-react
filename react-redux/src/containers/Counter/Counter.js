@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-//import { connect } from 'react-redux';
 import CounterDisplay from '../../components/CounterDisplay/CounterDisplay';
 import CounterButton from  '../../components/CounterButton/CounterButton';
-import counterInput from '../../components/CounterInput/CounterInput';
 import CounterInput from '../../components/CounterInput/CounterInput';
+import { connect } from 'react-redux';
+
 class Counter extends Component {
   render() {
     return (
