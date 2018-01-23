@@ -3,7 +3,18 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
-  return state;
+
+  switch (action.type) {
+    case 'ADD' : {
+      return {...state, counter: state.counter + action.payload}
+    }
+    case 'SUBSTRACT' : {
+      return {...state, counter: state.counter - action.payload}
+    }
+    default : {
+      return state;
+    }
+  }
 }
 
 export default reducer;

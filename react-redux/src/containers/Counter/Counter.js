@@ -11,8 +11,8 @@ class Counter extends Component {
         <small>-- Counter Container --</small>
         <CounterDisplay counter={this.props.counterValue}/>
         <CounterInput />
-        <CounterButton text={'Add'} />
-        <CounterButton text={'Remove'} />
+        <CounterButton text={'Add'} click={this.props.onAddCounter} />
+        <CounterButton text={'Substract'} click={this.props.onSubstractCounter} />
       </div>
     );
   }
@@ -25,7 +25,8 @@ const mapStateToProps = state => ({
 
 // Also map all the dispatches, again to propTypes of 'Counter'
 const mapDispatchToProps = dispatch => ({
-
+  onAddCounter: () => dispatch({type: 'ADD', payload: 5}), 
+  onSubstractCounter: () => dispatch({type: 'SUBSTRACT', payload: 4})
 });
 
 // The 'connect' take a Container and returns a high order component 
