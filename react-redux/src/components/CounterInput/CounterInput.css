@@ -1,0 +1,12 @@
+.counterInput {
+  display: block;
+  margin: 20px;
+}
+
+.counterInput input {
+  display: block;
+  margin: 5px auto;
+  text-align: center;
+  width: 150px;
+  font-size: 2rem;
+}

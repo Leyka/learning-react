@@ -1,0 +1,16 @@
+.counterButton {
+  display: inline-block;
+  margin: 20px auto;
+  margin-right: 20px;
+}
+.counterButton button {
+  display: block;
+  margin: 5px auto;
+  padding: 10px;
+  background-color: #e25545;
+  color: #fff;
+  border: 2px solid #6b1d15;
+  font-family: monospace;
+  width: 100px;
+  cursor: pointer;
+}

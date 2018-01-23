@@ -5,3 +5,8 @@
   margin: auto;
   font-family: monospace;
 }
+
+.counterDisplay h1 {
+  font-size: 3rem;
+  color: rgb(39, 230, 22);
+}
