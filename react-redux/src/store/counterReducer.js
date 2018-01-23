@@ -9,6 +9,7 @@ const reducer = (state = initialState, action) => {
       return {...state, counter: state.counter + action.payload}
     }
     case 'SUBSTRACT' : {
+      console.log(action.payload);
       return {...state, counter: state.counter - action.payload}
     }
     default : {
