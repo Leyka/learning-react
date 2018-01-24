@@ -10,7 +10,7 @@ import reducer from './store/counterReducer';
 
 const store = createStore(
   reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() // needed for Redux Dev tools
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() /* Needed for Redux DevTools Extension */
 );
 
 // Each time the store changes, we console log

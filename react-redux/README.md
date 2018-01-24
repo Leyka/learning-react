@@ -14,6 +14,7 @@ The usage of Redux is overkill for this context as I have only few objects to st
 * Map dispatch to Container Props 
 * Connect (from react-redux library)
 * [Controlled input](https://reactjs.org/docs/forms.html)
+* Redux DevTools Extension (Chrome)
 
 ## Preview
 
