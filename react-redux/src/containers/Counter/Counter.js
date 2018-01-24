@@ -8,12 +8,25 @@ import { connect } from 'react-redux';
 
 class Counter extends Component {
 
+  constructor(props) {
+    super(props);
+  }
+
+  /**
+   * Trying to bind for example this.props.currentValue = e.target.value
+   * But doesn't work for now
+   * @param e Event
+   */
+  handleInputChange(e) {
+    this.props.currentValue = e.target.value
+  }
+
   render() {
     return (
       <div>
         <small>-- Counter Container --</small>
         <CounterDisplay counter={this.props.counterValue}/>
-        <CounterInput />
+        <CounterInput change={this.handleInputChange}/>
         <CounterButton text={'Add'} click={this.props.onAddCounter} />
         <CounterButton text={'Substract'} click={this.props.onSubstractCounter} />
         <hr/>
@@ -29,11 +42,11 @@ const mapStateToProps = state => ({
   history: state.history
 });
 
-/* TODO : Bind the value of input to the parent container */ 
 
 // Also map all the dispatches, again to propTypes of 'Counter'
 const mapDispatchToProps = dispatch => ({
-  onAddCounter: () => dispatch({type: 'ADD', payload: 5}), 
+  /* TODO : Bind the payloads with real data (e.target.value of the input) */
+  onAddCounter: () => dispatch({type: 'ADD', payload: 5}),
   onSubstractCounter: () => dispatch({type: 'SUBSTRACT', payload: 4})
 });
 
