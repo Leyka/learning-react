@@ -1,7 +1,12 @@
 # React-redux
-The goal of this lab is to learn how React communicate with Redux. 
-Understand what's the purpose of a container, component, etc.
-And how we can pass the state (handling props), dispatch actions within a container etc.
+The goal of this lab is to learn how React communicate with Redux.
+
+Understand what's the purpose of a **Container VS Component** (or PureComponent)
+
+How we can dispatch actions, create a global store with a reducer
+
+The usage of Redux is overkill for this context as I have only few objects to store, but it was for the learning purpose.
+
 
 ## Preview
 
