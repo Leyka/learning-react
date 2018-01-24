@@ -1,7 +1,7 @@
 # React-redux
 The goal of this lab is to learn how React communicate with Redux using **redux** and **react-redux**
 
-The usage of Redux is overkill for this context as I have only few objects to store, but I kept it simple for the learning purpose.
+The usage of Redux is overkill for this context as I only have few objects to store, but I kept it simple for the learning purpose.
 
 ## Concepts I learned while doing this 
 
