@@ -1,20 +1,32 @@
 const initialState = {
-  counter: 0
-}
+  counter: 0,
+  history: []
+};
 
 const reducer = (state = initialState, action) => {
-
   switch (action.type) {
     case 'ADD' : {
-      return {...state, counter: state.counter + action.payload}
+      const result = state.counter + action.payload;
+
+      return {
+        ...state,
+        counter: result,
+        history: [...state.history, {type: action.type, initial: state.counter, result: result}]
+      }
     }
     case 'SUBSTRACT' : {
-      return {...state, counter: state.counter - action.payload}
+      const result = state.counter - action.payload;
+      return {
+        ...state,
+        counter: result,
+        history: [...state.history, {type: action.type, initial: state.counter, result: result}]
+      }
     }
     default : {
       return state;
     }
   }
-}
+
+};
 
 export default reducer;

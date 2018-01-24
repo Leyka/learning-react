@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import CounterDisplay from '../../components/CounterDisplay/CounterDisplay';
 import CounterButton from  '../../components/CounterButton/CounterButton';
 import CounterInput from '../../components/CounterInput/CounterInput';
+import History from '../../components/History/History';
+
 import { connect } from 'react-redux';
 
 class Counter extends Component {
+
   render() {
     return (
       <div>
@@ -13,6 +16,8 @@ class Counter extends Component {
         <CounterInput />
         <CounterButton text={'Add'} click={this.props.onAddCounter} />
         <CounterButton text={'Substract'} click={this.props.onSubstractCounter} />
+        <hr/>
+        <History history={this.props.history}/>
       </div>
     );
   }
@@ -20,7 +25,8 @@ class Counter extends Component {
 
 // Map the global store to propTypes of 'Counter' container
 const mapStateToProps = state => ({
-  counterValue: state.counter
+  counterValue: state.counter,
+  history: state.history
 });
 
 /* TODO : Bind the value of input to the parent container */ 
