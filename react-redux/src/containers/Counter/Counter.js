@@ -8,25 +8,12 @@ import { connect } from 'react-redux';
 
 class Counter extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
-  /**
-   * Trying to bind for example this.props.currentValue = e.target.value
-   * But doesn't work for now
-   * @param e Event
-   */
-  handleInputChange(e) {
-    this.props.currentValue = e.target.value
-  }
-
   render() {
     return (
       <div>
         <small>-- Counter Container --</small>
-        <CounterDisplay counter={this.props.counterValue}/>
-        <CounterInput change={this.handleInputChange}/>
+        <CounterDisplay result={this.props.result}/>
+        <CounterInput change={this.props.onInputChange} />
         <CounterButton text={'Add'} click={this.props.onAddCounter} />
         <CounterButton text={'Substract'} click={this.props.onSubstractCounter} />
         <hr/>
@@ -38,7 +25,7 @@ class Counter extends Component {
 
 // Map the global store to propTypes of 'Counter' container
 const mapStateToProps = state => ({
-  counterValue: state.counter,
+  result: state.result,
   history: state.history
 });
 
@@ -46,8 +33,9 @@ const mapStateToProps = state => ({
 // Also map all the dispatches, again to propTypes of 'Counter'
 const mapDispatchToProps = dispatch => ({
   /* TODO : Bind the payloads with real data (e.target.value of the input) */
-  onAddCounter: () => dispatch({type: 'ADD', payload: 5}),
-  onSubstractCounter: () => dispatch({type: 'SUBSTRACT', payload: 4})
+  onAddCounter: () => dispatch({type: 'ADD'}),
+  onSubstractCounter: () => dispatch({type: 'SUBSTRACT'}),
+  onInputChange: (e) => dispatch({type: 'INPUT_CHANGE', payload: e.target.value})
 });
 
 // The 'connect' take a Container and returns a high order component 

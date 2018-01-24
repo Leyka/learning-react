@@ -1,24 +1,32 @@
 const initialState = {
-  counter: 0,
+  result: 0,
+  currentValue: 0,
   history: []
 };
 
 const reducer = (state = initialState, action) => {
+  console.log('state is now..', state);
   switch (action.type) {
     case 'ADD' : {
-      const result = state.counter + action.payload;
+      const newResult = state.result + parseInt(state.currentValue, 10);
       return {
         ...state,
-        counter: result,
-        history: [...state.history, {type: action.type, initial: state.counter, value: action.payload, result: result}]
+        result: newResult,
+        history: [...state.history, {type: action.type, initial: state.result, value: state.currentValue, newResult: newResult}]
       }
     }
     case 'SUBSTRACT' : {
-      const result = state.counter - action.payload;
+      const newResult = state.result - state.currentValue;
       return {
         ...state,
-        counter: result,
-        history: [...state.history, {type: action.type, initial: state.counter, value: action.payload, result: result}]
+        result: newResult,
+        history: [...state.history, {type: action.type, initial: state.result, value: state.currentValue, newResult: newResult}]
+      }
+    }
+    case 'INPUT_CHANGE' : {
+      return {
+        ...state,
+        currentValue: action.payload
       }
     }
     default : {
