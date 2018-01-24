@@ -2,18 +2,16 @@ import React from 'react';
 
 const history = props => {
   const history = props.history;
-  console.log('type of history', typeof history, history);
-  console.log(history);
-  const listHistory = history.map((action, index) =>
-    <li key={'action_' + index}>{action}</li>
+  const listHistory = history.map( action =>
+    <div>{action.initial} {action.type === 'ADD' ? '+' : '-'} {action.value} = {action.result}</div>
   );
 
   return (
     <div className="history">
       <h3>List of actions</h3>
-      <ul>{listHistory}</ul>
+      <pre>{listHistory}</pre>
     </div>
-  )
+  );
 };
 
 export default history;
