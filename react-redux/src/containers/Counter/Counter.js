@@ -32,7 +32,6 @@ const mapStateToProps = state => ({
 
 // Also map all the dispatches, again to propTypes of 'Counter'
 const mapDispatchToProps = dispatch => ({
-  /* TODO : Bind the payloads with real data (e.target.value of the input) */
   onAddCounter: () => dispatch({type: 'ADD'}),
   onSubstractCounter: () => dispatch({type: 'SUBSTRACT'}),
   onInputChange: (e) => dispatch({type: 'INPUT_CHANGE', payload: e.target.value})
