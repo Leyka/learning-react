@@ -1,3 +1,7 @@
+.history {
+    width: 350px;
+    margin: 10px auto;
+}
 .history pre {
     max-height: 300px;
     overflow-y: auto;
