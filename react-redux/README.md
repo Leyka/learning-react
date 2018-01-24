@@ -1,12 +1,19 @@
 # React-redux
-The goal of this lab is to learn how React communicate with Redux.
-
-Understand what's the purpose of a **Container VS Component** (or PureComponent)
-
-How we can dispatch actions, create a global store with a reducer
+The goal of this lab is to learn how React communicate with Redux using **redux** and **react-redux**
 
 The usage of Redux is overkill for this context as I have only few objects to store, but it was for the learning purpose.
 
+## Concepts I learned while doing this 
+
+* One global store
+* Immutable state => we can track actions!
+* Dispatch / Reducer 
+* Stateful (Container) vs Stateless components (Component)
+* [Action creators](https://redux.js.org/docs/basics/Actions.html)
+* Map state to Container Props
+* Map dispatch to Container Props 
+* Connect (from react-redux library)
+* [Controlled input](https://reactjs.org/docs/forms.html)
 
 ## Preview
 
