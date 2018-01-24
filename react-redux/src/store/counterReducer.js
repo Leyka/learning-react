@@ -4,7 +4,7 @@ const initialState = {
   history: []
 };
 
-// Add the value from the Input to the current counter and store the action in history
+// Add the given value to the current counter, and store the result in history
 const addToCounter = (state, action) => {
   const newResult = state.result + state.valueToHandle;
   return {
@@ -22,7 +22,7 @@ const addToCounter = (state, action) => {
   }
 };
 
-// Substract the value from the Input to the current counter and store the action in history
+// Substract the given value to the current counter, and store the result in history
 const substractToCounter = (state, action) => {
   const newResult = state.result - state.valueToHandle;
   return {
@@ -41,6 +41,7 @@ const substractToCounter = (state, action) => {
 };
 
 // Store the inputted value to the global state (Controlled input)
+// So that actions like addToCounter and substractToCounter can access to this value
 const storeValue = (state, action) => {
   return {
     ...state,
