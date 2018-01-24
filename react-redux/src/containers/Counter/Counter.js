@@ -34,7 +34,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   onAddCounter: () => dispatch({type: 'ADD'}),
   onSubstractCounter: () => dispatch({type: 'SUBSTRACT'}),
-  onInputChange: (e) => dispatch({type: 'INPUT_CHANGE', payload: e.target.value})
+  onInputChange: (value) => dispatch({type: 'INPUT_CHANGE', payload: value})
 });
 
 // The 'connect' take a Container and returns a high order component 
