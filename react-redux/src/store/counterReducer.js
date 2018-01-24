@@ -5,7 +5,6 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  console.log('state is now..', state);
   switch (action.type) {
     case 'ADD' : {
       const newResult = state.result + parseInt(state.currentValue, 10);
@@ -33,7 +32,6 @@ const reducer = (state = initialState, action) => {
       return state;
     }
   }
-
 };
 
 export default reducer;
