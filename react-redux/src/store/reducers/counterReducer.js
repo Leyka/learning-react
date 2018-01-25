@@ -4,6 +4,14 @@ const initialState = {
   history: []
 };
 
+// Helper function that returns a new history object
+const newHistoryElement = (state, action, newResult) => ({
+  type: action.type,
+  initial: state.result,
+  value: state.valueToHandle,
+  newResult: newResult
+});
+
 // Add the given value to the current counter, and store the result in history
 const addToCounter = (state, action) => {
   const newResult = state.result + state.valueToHandle;
@@ -12,30 +20,20 @@ const addToCounter = (state, action) => {
     result: newResult,
     history: [
       ...state.history,
-      {
-        type: action.type,
-        initial: state.result,
-        value: state.valueToHandle,
-        newResult: newResult
-      }
+      newHistoryElement(state, action, newResult)
     ]
   }
 };
 
-// Substract the given value to the current counter, and store the result in history
-const substractToCounter = (state, action) => {
+// Subtract the given value to the current counter, and store the result in history
+const subtractToCounter = (state, action) => {
   const newResult = state.result - state.valueToHandle;
   return {
     ...state,
     result: newResult,
     history: [
       ...state.history,
-      {
-        type: action.type,
-        initial: state.result,
-        value: state.valueToHandle,
-        newResult: newResult
-      }
+      newHistoryElement(state, action, newResult)
     ]
   }
 };
@@ -45,7 +43,7 @@ const substractToCounter = (state, action) => {
 const storeValue = (state, action) => {
   return {
     ...state,
-    valueToHandle: parseInt(action.payload, 10)
+    valueToHandle: parseInt(action.payload)
   }
 };
 
@@ -53,7 +51,7 @@ const storeValue = (state, action) => {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD' : return addToCounter(state, action);
-    case 'SUBSTRACT': return substractToCounter(state, action);
+    case 'SUBTRACT': return subtractToCounter(state, action);
     case 'INPUT_CHANGE' : return storeValue(state, action);
     default : return state;
   }

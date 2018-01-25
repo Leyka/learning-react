@@ -7,11 +7,11 @@ export const addToCounter = () => ({
 });
 
 /**
- * Action creator: Substract the value from the Input to the current counter
+ * Action creator: Subtract the value from the Input to the current counter
  * @returns {{type: string, payload: *}}
  */
-export const substractToCounter = () => ({
-  type: 'SUBSTRACT'
+export const subtractToCounter = () => ({
+  type: 'SUBTRACT'
 });
 
 /**

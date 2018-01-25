@@ -1,16 +1,16 @@
-/* Import react and redux */
+// Import react and redux
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-/* Import the Components */
+// Import the Components
 import CounterDisplay from '../../components/CounterDisplay/CounterDisplay';
 import CounterButton from  '../../components/CounterButton/CounterButton';
 import CounterInput from '../../components/CounterInput/CounterInput';
 import History from '../../components/History/History';
-/* Import the action creators */
+// Import the action creators
 import * as actionCreators from '../../store/actions/actionCreators';
 
 /**
- * The main Container which wraps all the stateless components
+ * The main Container which wraps all the presentational components
  */
 class Counter extends Component {
   render() {
@@ -20,7 +20,7 @@ class Counter extends Component {
         <CounterDisplay result={this.props.result}/>
         <CounterInput change={this.props.onInputChange} />
         <CounterButton text={'Add'} click={this.props.onAddCounter} />
-        <CounterButton text={'Substract'} click={this.props.onSubstractCounter} />
+        <CounterButton text={'Subtract'} click={this.props.onSubtractCounter} />
         <hr/>
         <History history={this.props.history}/>
       </div>
@@ -38,7 +38,7 @@ const mapStateToProps = state => ({
 // Also map all the dispatches, again to propTypes of 'Counter'
 const mapDispatchToProps = dispatch => ({
   onAddCounter: () => dispatch(actionCreators.addToCounter()),
-  onSubstractCounter: () => dispatch(actionCreators.substractToCounter()),
+  onSubtractCounter: () => dispatch(actionCreators.subtractToCounter()),
   onInputChange: value => dispatch(actionCreators.saveInputValue(value))
 });
 

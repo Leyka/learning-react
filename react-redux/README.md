@@ -8,7 +8,7 @@ The usage of Redux is overkill for this context as I only have few objects to st
 * One global store
 * Immutable state => we can track actions!
 * Dispatch / Reducer 
-* Stateful (Container) vs Stateless components (Component)
+* Presentational VS Container Components
 * [Action creators](https://redux.js.org/docs/basics/Actions.html)
 * Map state to Container Props
 * Map dispatch to Container Props 
