@@ -7,7 +7,7 @@ import CounterButton from  '../../components/CounterButton/CounterButton';
 import CounterInput from '../../components/CounterInput/CounterInput';
 import History from '../../components/History/History';
 /* Import the action creators */
-import * as actionCreators from '../../store/actions/actions';
+import * as actionCreators from '../../store/actions/actionCreators';
 
 /**
  * The main Container which wraps all the stateless components

@@ -6,7 +6,7 @@ import App from './App';
 /** redux and react-redux stuff */
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import reducer from './store/counterReducer';
+import reducer from './store/reducers/counterReducer';
 
 const store = createStore(
   reducer,
