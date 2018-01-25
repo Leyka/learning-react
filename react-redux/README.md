@@ -3,6 +3,10 @@ The goal of this lab is to learn how React communicate with Redux using **redux*
 
 The usage of Redux is overkill for this context as I only have few objects to store, but I kept it simple for the learning purpose.
 
+## Demo 
+The demo can be found here : https://leyka.github.io/counter
+
+
 ## Concepts I learned while doing this 
 
 * One global store
