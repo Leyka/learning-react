@@ -1,0 +1,8 @@
+form div {
+    margin: 20px;
+}
+
+.error {
+    background: red;
+    color: white;
+}
