@@ -16,9 +16,9 @@ class Counter extends Component {
   render() {
     return (
       <div>
-        <h3>Counter Manager</h3>
-        <p>This small <a href="https://github.com/Leyka/learning-react/tree/master/react-redux">project</a> is to learn how React, Redux, and react-redux works together</p>
         <small>-- Counter Container --</small>
+        <h3>Counter Manager</h3>
+        <p>This <a href="https://github.com/Leyka/learning-react/tree/master/react-redux">small project</a> is to learn how React, Redux, and react-redux works together</p>
         <CounterDisplay result={this.props.result}/>
         <CounterInput change={this.props.onInputChange} />
         <CounterButton text={'Add'} click={this.props.onAddCounter} />

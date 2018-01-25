@@ -3,7 +3,7 @@ import "./History.css";
 
 const history = props => {
   const history = props.history;
-  const listHistory = history.map( (action, index) =>
+  const listHistory = history.reverse().map( (action, index) =>
     <p key={'action_' + index}>
       {action.initial} {action.type === 'ADD' ? '+' : '-'} {action.value} = {action.newResult}
     </p>
