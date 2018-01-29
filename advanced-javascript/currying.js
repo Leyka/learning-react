@@ -5,5 +5,8 @@
 const add = x => y => x + y;
 
 const add3 = add(3);
+console.log(add3) // => [Function]
+
 const result = add3(5);
+
 console.log(result === 8); // => true
