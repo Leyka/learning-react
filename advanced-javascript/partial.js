@@ -6,6 +6,7 @@ const partial = (func, ...args) => {
 };
 
 const add = (x,y) => x+y;
+// ...args = x = 3, and ...otherArgs = y = 2
 const add3 = partial(add, 3);
 console.log('add3', add3(2)); // => 5
 
@@ -18,4 +19,3 @@ const partialWithBind = (func, ...args) => {
 const subtract = (x,y) => y-x;
 const sub2 = partialWithBind(subtract, 2);
 console.log('sub2', sub2(6)); // => 4
-

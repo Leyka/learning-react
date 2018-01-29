@@ -1,4 +1,4 @@
-// Practising Closures in JS in ES6
+// Practising Closures in ES6
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
 
 // Example with add
